@@ -26,16 +26,16 @@ app.listen(3000,()=>console.log('Express server is runnig at port no :3000'));
 app.get('/fornecedores',(req,res)=>{
     mysqlConnection.query('SELECT * FROM fornecedores',(err,rows, fields)=>{
         if(!err)
-        res.send(rows);
+res.send(rows);
         //console.log(rows[0].ID);
-        else
+else
         console.log(err);
     })
 });
 
 //Get um fornecedor
-//ffornecedores/1
-app.delete('/fornecedores/:id',(req,res)=>{
+// fornecedores/1
+app.get('/fornecedores/:id',(req,res)=>{
     mysqlConnection.query('SELECT * FROM fornecedores WHERE ID = ?',[req.params.id],(err,rows, fields)=>{
         if(!err)
         res.send(rows);
@@ -45,12 +45,13 @@ app.delete('/fornecedores/:id',(req,res)=>{
 });
 
 //Delete um fornecedor
-/funcionarios/1
-app.get('/fornecedores/:id',(req,res)=>{
+ // /funcionarios/1
+ app.get('/fornecedores/:id',(req,res)=>{
     mysqlConnection.query('DELETE * FROM fornecedores WHERE ID = ?',[req.params.id],(err,rows, fields)=>{
         if(!err)
         res.send('DELETE ');
         else
         console.log(err);
-    })
-});
+     })
+ });
+
