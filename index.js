@@ -10,7 +10,7 @@ var mysqlConnection = mysql.createConnection({
     user: 'root',
     password: 'uander',
     database: 'nodeDB' //Nome do Banco
-    //employee é a tabela funcionarios
+    //employee é a tabela fornecedores
 });
 
 mysqlConnection.connect((err)=>{
@@ -22,9 +22,9 @@ mysqlConnection.connect((err)=>{
 
 app.listen(3000,()=>console.log('Express server is runnig at port no :3000'));
 
-//Get todos os funcionarios
+//Get todos os fornecedores
 app.get('/fornecedores',(req,res)=>{
-    mysqlConnection.query('SELECT * FROM funcionarios',(err,rows, fields)=>{
+    mysqlConnection.query('SELECT * FROM fornecedores',(err,rows, fields)=>{
         if(!err)
         res.send(rows);
         //console.log(rows[0].ID);
@@ -33,8 +33,8 @@ app.get('/fornecedores',(req,res)=>{
     })
 });
 
-//Get um funcionarios
-//funcionarios/1
+//Get um fornecedor
+//ffornecedores/1
 app.delete('/fornecedores/:id',(req,res)=>{
     mysqlConnection.query('SELECT * FROM fornecedores WHERE ID = ?',[req.params.id],(err,rows, fields)=>{
         if(!err)
@@ -44,7 +44,7 @@ app.delete('/fornecedores/:id',(req,res)=>{
     })
 });
 
-//Delete um funcionarios
+//Delete um fornecedor
 /funcionarios/1
 app.get('/fornecedores/:id',(req,res)=>{
     mysqlConnection.query('DELETE * FROM fornecedores WHERE ID = ?',[req.params.id],(err,rows, fields)=>{
